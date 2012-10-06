@@ -660,6 +660,9 @@
     <Compile Include="..\..\nugetgallery\Website\Controllers\PackagesController.cs">
       <Link>Controllers\PackagesController.cs</Link>
     </Compile>
+    <Compile Include="..\..\nugetgallery\Website\Controllers\PagesController.cs">
+      <Link>Controllers\PagesController.cs</Link>
+    </Compile>
     <Compile Include="..\..\nugetgallery\Website\DynamicData\Content\GridViewPager.ascx.cs">
       <Link>DynamicData\Content\GridViewPager.ascx.cs</Link>
       <DependentUpon>GridViewPager.ascx</DependentUpon>
@@ -1143,6 +1146,7 @@
     <Compile Include="App_Start\Routes.cs" />
     <Compile Include="Controllers\AuthenticationController.cs" />
     <Compile Include="Controllers\PagesController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
     <Compile Include="Controllers\RssController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Entities\EntitiesContext.cs" />
@@ -1162,10 +1166,15 @@
     <Compile Include="MvcOverrides\HttpContextProxy.cs" />
     <Compile Include="MvcOverrides\HttpRequestDecorator.cs" />
     <Compile Include="MvcOverrides\HttpRequestProxy.cs" />
+    <Compile Include="PackagesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Services\AmazonS3ClientWrapper.cs" />
     <Compile Include="Services\AmazonS3FileStorageService.cs" />
     <Compile Include="Services\IAmazonS3Client.cs" />
+    <Compile Include="Services\IMessageService.cs" />
     <Compile Include="Services\IUserSiteProfilesService.cs" />
+    <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\RssActionResult.cs" />
     <Compile Include="Services\UserSiteProfilesService.cs" />
     <Compile Include="Strings.Designer.cs">
@@ -1175,6 +1184,8 @@
     </Compile>
     <Compile Include="UrlExtensions.cs" />
     <Compile Include="ViewModels\EditProfileViewModel.cs" />
+    <Compile Include="ViewModels\PackageBrokenViewModel.cs" />
+    <Compile Include="ViewModels\PackageOutdatedViewModel.cs" />
     <Compile Include="ViewModels\UserProfileModel.cs" />
     <Compile Include="ViewModels\UserSiteProfileViewModel.cs" />
   </ItemGroup>
@@ -1452,6 +1463,8 @@
     <Content Include="Errors\_PageStart.cshtml" />
     <Content Include="Views\Packages\_PackageDependencies.cshtml" />
     <Content Include="Web.ForbiddenHandlers.config" />
+    <Content Include="Views\Packages\MarkOutdated.cshtml" />
+    <Content Include="Views\Packages\MarkBroken.cshtml" />
     <Content Include="Install.ps1" />
   </ItemGroup>
   <ItemGroup />
