@@ -222,8 +222,7 @@ The {2} Team";
                 SendMessage(mailMessage);
             }
         }
-
-
+        
         public void SendPackageOwnerRequest(User fromUser, User toUser, PackageRegistration package, string confirmationUrl)
         {
             if (!toUser.EmailAllowed)
@@ -252,6 +251,62 @@ The {3} Team";
                 mailMessage.From = fromUser.ToMailAddress();
 
                 mailMessage.To.Add(toUser.ToMailAddress());
+                SendMessage(mailMessage);
+            }
+        }
+
+        public void ReportPackageOutdated(MailAddress fromAddress, Package package)
+        {
+            string subject = "[{0}] Package '{1}' Version '{2}' Reported Outdated";
+            string body = @"_User {0} ({1}) reports the package '{2}' version '{3}' as outdated._ 
+
+_Message sent from {4}_
+";
+            body = String.Format(CultureInfo.CurrentCulture,
+                body,
+                fromAddress.DisplayName,
+                fromAddress.Address,
+                package.PackageRegistration.Id,
+                package.Version,
+                settings.GalleryOwnerName);
+
+            using (var mailMessage = new MailMessage())
+            {
+                mailMessage.Subject = String.Format(CultureInfo.CurrentCulture, subject, settings.GalleryOwnerName, package.PackageRegistration.Id, package.Version);
+                mailMessage.Body = body;
+                mailMessage.From = fromAddress;
+
+                mailMessage.To.Add(settings.GalleryOwnerEmail);
+                SendMessage(mailMessage);
+            }
+        }
+
+        public void ReportPackageBroken(MailAddress fromAddress, Package package, string message)
+        {
+            string subject = "[{0}] Package '{1}' Version '{2}' Reported Broken";
+            string body = @"_User {0} ({1}) reports the package '{2}' version '{3}' as broken. 
+{0} left the following information in the report:_
+
+{4}
+
+_Message sent from {5}_
+";
+            body = String.Format(CultureInfo.CurrentCulture,
+                body,
+                fromAddress.DisplayName,
+                fromAddress.Address,
+                package.PackageRegistration.Id,
+                package.Version,
+                message,
+                settings.GalleryOwnerName);
+
+            using (var mailMessage = new MailMessage())
+            {
+                mailMessage.Subject = String.Format(CultureInfo.CurrentCulture, subject, settings.GalleryOwnerName, package.PackageRegistration.Id, package.Version);
+                mailMessage.Body = body;
+                mailMessage.From = fromAddress;
+
+                mailMessage.To.Add(settings.GalleryOwnerEmail);
                 SendMessage(mailMessage);
             }
         }
