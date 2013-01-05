@@ -526,10 +526,6 @@
     <Compile Include="..\..\nugetgallery\Website\PackageCurators\Windows8PackageCurator.cs">
       <Link>PackageCurators\Windows8PackageCurator.cs</Link>
     </Compile>
-    <Compile Include="..\..\nugetgallery\Website\PackagesController.generated.cs">
-      <Link>PackagesController.generated.cs</Link>
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="..\..\nugetgallery\Website\Queries\CuratedFeedByKeyQuery.cs">
       <Link>Queries\CuratedFeedByKeyQuery.cs</Link>
     </Compile>
@@ -656,12 +652,6 @@
     </Compile>
     <Compile Include="..\..\nugetgallery\Website\Controllers\JsonApiController.cs">
       <Link>Controllers\JsonApiController.cs</Link>
-    </Compile>
-    <Compile Include="..\..\nugetgallery\Website\Controllers\PackagesController.cs">
-      <Link>Controllers\PackagesController.cs</Link>
-    </Compile>
-    <Compile Include="..\..\nugetgallery\Website\Controllers\PagesController.cs">
-      <Link>Controllers\PagesController.cs</Link>
     </Compile>
     <Compile Include="..\..\nugetgallery\Website\DynamicData\Content\GridViewPager.ascx.cs">
       <Link>DynamicData\Content\GridViewPager.ascx.cs</Link>
@@ -975,12 +965,6 @@
     </Compile>
     <Compile Include="..\..\nugetgallery\Website\Services\Extensions.cs">
       <Link>Services\Extensions.cs</Link>
-    </Compile>
-    <Compile Include="..\..\nugetgallery\Website\Services\IMessageService.cs">
-      <Link>Services\IMessageService.cs</Link>
-    </Compile>
-    <Compile Include="..\..\nugetgallery\Website\Services\MessageService.cs">
-      <Link>Services\MessageService.cs</Link>
     </Compile>
     <Compile Include="..\..\nugetgallery\Website\SharedController.generated.cs">
       <Link>SharedController.generated.cs</Link>
