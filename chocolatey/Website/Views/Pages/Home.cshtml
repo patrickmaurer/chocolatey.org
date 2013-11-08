@@ -14,9 +14,20 @@
     <img src="@Url.Content("~/content/images/hero.png")" alt="Chocolatey install of Git (cinst git)" />
 </section>
 <div class="nuget-badge">
-    <p>
+    <ul id="install-tabs" class="menu">
+        <li class="active"><a href="#cmd-install">Command Line</a></li>
+        <li><a href="#posh-install">PowerShell</a></li>
+    </ul>
+    <div id="cmd-install" class="content">
+        <p>
         <code><span>C:\&gt;</span> @@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))" &amp;&amp; SET PATH=%PATH%;%systemdrive%\chocolatey\bin</code>
-    </p>
+        </p>
+    </div>
+    <div id="posh-install" class="content">
+        <p>
+            <code id="post-install-code"><span>C:\&gt;</span>iex ((new-object net.webclient).DownloadString('https://chocolatey.org/install.ps1'))</code>
+        </p>
+     </div>
 </div>
 
 <section class="aggstats">
@@ -54,6 +65,13 @@
 
 @section BottomScripts
 {
+    <script type="text/javascript" src="@Url.Content("~/Scripts/jquery.tabify.js")"></script>
+     <script type="text/javascript">
+        $(function () {
+            $('#install-tabs').tabify();
+        });
+    </script>
+
     <script type="text/javascript" src="@Url.Content("~/Scripts/stats.js")"></script>
     <script type="text/javascript" >
         $(getStats);
@@ -62,14 +80,14 @@
     <script type="text/javascript" src="@Url.Content("~/Scripts/ZeroClipboard.js")"></script>
     <script type="text/javascript">
 
-        $(document).ready(function () {
+        $(document).ready(function() {
             ZeroClipboard.setMoviePath('@Url.Content("~/Scripts/ZeroClipboard.swf")');
             var clip = new ZeroClipboard.Client();
             clip.setText('@@powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(\'https://chocolatey.org/install.ps1\'))" && SET PATH=%PATH%;%systemdrive%\\chocolatey\\bin');
             clip.setHandCursor(true);
             clip.glue('copyButton');
 
-            $(window).resize(function () {
+            $(window).resize(function() {
                 clip.reposition();
             });
         });
@@ -77,6 +95,7 @@
 
 @*
     <script type="text/javascript">        var switchTo5x = true;</script>
+
 
     <script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
 
